@@ -22,7 +22,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
@@ -33,7 +33,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">frontEnd</a>
+            <a class="navbar-brand" href="#/">MapChat</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -42,6 +42,20 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#logIn" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                      Log in
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#logIn">Log in</a></li>
+                  <li><a href="#register">Register</a></li>
+                  <li><a href="#logOut">Log out</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
