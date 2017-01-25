@@ -15,13 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 51.250, lng: 22.57},
-          zoom: 13
-        });
-      }
+
     </script>
   </head>
   <body ng-app="frontEndApp">
@@ -36,6 +30,7 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#/">MapChat</a>
           </div>
+
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Chat</a></li>
               <li><a ng-href="#/about">O projekcie</a></li>
@@ -99,6 +94,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/map.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
