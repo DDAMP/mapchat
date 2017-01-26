@@ -3,10 +3,14 @@ var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
+var mongoose = require('mongoose');  
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
+
+var configDB = require('./config/database.js');
+mongoose.connect(configDB.url);
 
 var flash = require('connect-flash');
 
@@ -34,7 +38,7 @@ app.use(passport.session());
 app.use(flash()); 
 
 app.listen(3000, function () {
-console.log('Example app listening on port 3000!');	
+console.log('MapChat listening on port 3000!');	
 
 });
 require('./login/rutes.js')(app,passport); 
