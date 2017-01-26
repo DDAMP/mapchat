@@ -1,37 +1,47 @@
-<!doctype html>
-	<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-		<title>AngularJS Google Plus Sign-in Button Directive</title>
-		<meta name="description" content="A directive for AngularJS to provide a Google Plus Sigin-in Button">
-		<link href="//netdna.bootstrapcdn.com/bootswatch/2.3.0/cerulean/bootstrap.min.css" rel="stylesheet">
-	</head>
-	<body class="container">
-		<h2>Logowanie</h2>
-		<div class="row">
-			<div class="span6" ng-app="ExampleSigninApp">
-				<div ng-controller="ExampleCtrl">
-					<google-plus-signin clientid="620125449078-4jo21sf1ltlb81o5cbke4sic3ogoo3gm"></google-plus-signin>
-					<p>^ This is a Google Plus sign-in button</p>
-				</div>
-			</div>
+	<!DOCTYPE html>
+	 
+	<html data-ng-app="angularForm">
+	 
+		<head>
+			<title>AngularJS formularz logowania - www.jsdn.pl js.n00b</title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+			<script type="text/javascript" src="JS/controller.js"></script>
+			<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href="CSS/styles.css">
+		</head>
+	 
+		<body data-ng-controller="formCtrl">
+	 
+		<div class="panel">
+			<h3 class="panel-heading">Login form</h3>
+			<form name="angularForm" class="panel-body" method="POST" novalidate action="//api.test/auth" data-ng-hide="correctLogIn" data-ng-submit="submitData($event)">
+					<fieldset class="well">
+						<div <div class="form-group">
+							<label for="email">E-mail: </label>
+							<input type="email" required name="email" id="email" class="form-control" data-ng-pattern="emailPattern" ng-model="user.email">
+							<div class="error" ng-show="angularForm.email.$invalid && angularForm.email.$dirty">
+								<span ng-show="angularForm.email.$error.pattern">Please enter a valid email address </span>
+								<span ng-show="angularForm.email.$error.required">Please enter a value</span>
+							</div>
+						</div>
+						<div <div class="form-group">
+							<label for="password">Password: </label>
+							<input type="password" required name="password" id="password" class="form-control" data-ng-minlength='6' data-ng-pattern="passPattern" data-ng-model="user.pass">
+							<div class="error" ng-show="angularForm.password.$invalid && angularForm.password.$dirty">
+								<span ng-show="angularForm.password.$error">Please enter a valid password (6 signs, at least one small and one capital letter and one nubmer)</span>
+							</div>
+						</div>
+						<input type="submit" value="Login" class="btn btn-primary btn-block" data-ng-disabled="angularForm.$invalid">
+					</fieldset>
+			</form>
+	 
+			<p class="bg-success login-info" data-ng-show="correctLogIn">Logowanie poprawne</p>
+			<p class="bg-warning login-info" data-ng-show="incorrectLogIn">Niepoprawne login lub hasło</p>
+			<p class="bg-danger login-info" data-ng-show="serverProblem">Błąd usługi</p>
 		</div>
-		<hr>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-		<script src="google-plus-signin.js"></script>
-		<script>
-			angular.module('ExampleSigninApp', ['directive.g+signin'])
-			.controller('ExampleCtrl', function ($scope) {
-				$scope.$on('event:google-plus-signin-success', function (event, authResult) {
-	          // User successfully authorized the G+ App!
-	          console.log('Signed in!');
-	      });
-				$scope.$on('event:google-plus-signin-failure', function (event, authResult) {
-	          // User has not authorized the G+ App!
-	          console.log('Not signed into Google Plus.');
-	      });
-			});
-		</script>
-	</body>
-</html>
+	 
+		</body>
+	 
+	</html>
